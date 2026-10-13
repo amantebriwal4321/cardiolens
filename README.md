@@ -1,3 +1,160 @@
-# New project
+# CardioLens
 
-This project was created by a Cursor cloud agent.
+CardioLens is a teaching viewer for coronary artery disease. It estimates overall CAD and significant stenosis in the LAD, LCX, and RCA from the clinical, ECG, lab, and echo columns in the UCI extension of the Z-Alizadeh Sani dataset, then paints those probabilities onto a labeled 3D heart.
+
+It is decision support and teaching material. It is not a diagnosis, not a cath report, and not a substitute for a cardiologist or emergency care.
+
+Solo project by Aman Tebriwal for Track A of the Multimodal AI Hackathon 2026.
+
+## Results
+
+These numbers come from `ml/train.py`. They are stratified 5-fold out-of-fold scores for the deployed model, a random forest, at a probability threshold of 0.50. Positive class is CAD or Stenotic. Do not replace them by hand.
+
+| Target | Accuracy | Precision | Recall | F1 | ROC-AUC | Brier |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: |
+| Overall CAD | 0.865 | 0.892 | 0.921 | 0.907 | 0.926 | 0.118 |
+| LAD stenosis | 0.785 | 0.795 | 0.853 | 0.823 | 0.854 | 0.167 |
+| LCX stenosis | 0.690 | 0.624 | 0.529 | 0.573 | 0.733 | 0.209 |
+| RCA stenosis | 0.683 | 0.594 | 0.500 | 0.543 | 0.726 | 0.207 |
+
+Mean ROC-AUC across the five folds is 0.931, 0.860, 0.729, and 0.725 for CAD, LAD, LCX, and RCA. A majority-class baseline accuracy on CAD is 0.713 (216 of 303 patients are labeled CAD). LCX and RCA are the harder targets: the positive class is the minority, and recall at 0.50 is about 0.53 and 0.50.
+
+The forest won on mean ROC-AUC across the four targets (0.811), ahead of XGBoost (0.804), histogram gradient boosting (0.787), and L2 logistic regression (0.757). Plots and the full fold table are in `ml/plots` and `ml/metrics`.
+
+SHAP values for the deployed forests are in probability units. On the full 303-row matrix, base value plus the SHAP sum matches `predict_proba` within about 0.002.
+
+## Prerequisites
+
+- Python 3.12
+- Node.js 22
+- The committed model files under `ml/models`. Training is optional if you only want to run the app.
+
+## Run locally
+
+From the repo root:
+
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+uvicorn backend.app.main:app --host 127.0.0.1 --port 8091
+```
+
+In a second terminal:
+
+```bash
+cd web
+npm install
+npm run dev
+```
+
+Open [http://127.0.0.1:3921](http://127.0.0.1:3921).
+
+The page proxies `/api/backend/*` to `BACKEND_URL`, which defaults to `http://127.0.0.1:8091`.
+
+To retrain and overwrite metrics, plots, and weights:
+
+```bash
+python ml/train.py
+```
+
+To rebuild the heart mesh and vessel paths:
+
+```bash
+python ml/build_heart.py
+```
+
+Tests:
+
+```bash
+pytest -q
+```
+
+The tests recompute accuracy, precision, recall, F1, and ROC-AUC from `ml/metrics/oof_predictions.csv` and check that they match `cv_metrics.json`. They also call the API and check that SHAP reconstructs each probability.
+
+## One-container run
+
+```bash
+docker build -t cardiolens .
+docker run --rm -p 3921:3921 cardiolens
+```
+
+The image starts the FastAPI service on 127.0.0.1:8091 inside the container and Next.js on 0.0.0.0:3921. The browser only needs port 3921.
+
+## Deploy
+
+The app is two processes behind one port when you use the Docker image above. That is the easiest single unit: any host that runs a container can serve it.
+
+### A small VM or a container host
+
+1. Install Docker.
+2. `docker build -t cardiolens .`
+3. `docker run -d --name cardiolens -p 3921:3921 cardiolens`
+4. Open `http://<host>:3921`.
+
+### Split free-tier hosting
+
+Vercel can host the Next.js app. The Python model service needs a separate process because the forests and SHAP run in Python.
+
+1. Backend. On Render, Railway, or Fly.io, create a web service from this repo with:
+   - Build: `pip install -r requirements-runtime.txt`
+   - Start: `uvicorn backend.app.main:app --host 0.0.0.0 --port $PORT`
+   - Health check path: `/health`
+2. Copy the public backend URL.
+3. Frontend. Import the repo into Vercel, set the root directory to `web`, and set the environment variable `BACKEND_URL` to that public URL (no trailing slash).
+4. Deploy. The browser calls `/api/backend/predict`, and the Next.js route forwards it to `BACKEND_URL`.
+
+Free instances often sleep. The first estimate after idle time can take longer because the forests and SHAP explainers load on startup.
+
+## Architecture
+
+```text
+browser
+  Next.js page (form, SHAP panel, React Three Fiber heart)
+    /api/backend/*  ->  FastAPI
+                         joblib random forests
+                         SHAP TreeExplainer (probability output)
+```
+
+Shared code in `cardiolens_core` encodes inputs the same way in training and in the API. LAD, LCX, RCA, and Cath are labels. The encoder refuses them as inputs. `Exertional CP` is dropped because every row is N.
+
+The live model is the forest refit on all 303 rows after cross-validation. Sample buttons are real cohort rows. A prediction on a sample is an illustration, not a fair test. The cross-validation card in the UI is the performance claim.
+
+The heart is generated by `ml/build_heart.py` from the standard algebraic heart surface, rotated so the apex points down, then skewed slightly toward anatomical left. LAD, LCX, and RCA centerlines are polylines of surface vertices. Color is the stenosis probability for that vessel, from teal through amber to crimson. It is a schematic, not a CT mesh.
+
+## Dataset
+
+Alizadehsani, R., Roshanzamir, M., and Sani, Z. (2013). extention of Z-Alizadeh sani dataset [Dataset]. UCI Machine Learning Repository. https://doi.org/10.24432/C5461K
+
+303 patients, 59 source columns. One row (index 93) is labeled Cath Normal while LAD is Stenotic and LCX and RCA are Normal. The models predict the source labels. That row was not relabeled.
+
+The CSV committed at `ml/data/z_alizadeh_extension.csv` was unpacked from the UCI zip `extention of Z-Alizadeh sani dataset.xlsx`.
+
+## AI assistance disclosure
+
+AI coding assistants were used. Cursor, with a coding agent, wrote most of this repository: the training script, the FastAPI service, the Next.js interface, the heart-mesh script, the tests, and these docs. Aman Tebriwal is the submitting student.
+
+The metrics, plots, and model files were produced by running `ml/train.py` on this machine against the UCI file. They were not typed in from memory. SHAP values come from the SHAP library. If you retrain, `pytest` checks that the saved metrics still match the saved out-of-fold predictions.
+
+## Third-party attributions
+
+- UCI Machine Learning Repository, extension of the Z-Alizadeh Sani dataset, DOI 10.24432/C5461K. The spelling "extention" is the repository's.
+- scikit-learn, SHAP, XGBoost, matplotlib, FastAPI, pandas, NumPy. XGBoost is in the comparison. The deployed model is a scikit-learn random forest.
+- Next.js, React, React Three Fiber, drei, Three.js, Tailwind CSS, and shadcn/ui. The 3D scene is React Three Fiber. The mesh is not a downloaded anatomical file. It is built in `ml/build_heart.py` from the algebraic heart surface `(x^2 + 9/4 y^2 + z^2 - 1)^3 - x^2 z^3 - 9/80 y^2 z^3 = 0`.
+- No BodyParts3D, Sketchfab, or NIH mesh is bundled.
+
+## Layout
+
+```text
+cardiolens_core/     encoder and SHAP runner
+ml/train.py          cross-validation, plots, saved forests
+ml/build_heart.py    schematic heart and vessel paths
+ml/models/           joblib weights, schema, SHAP background
+ml/metrics/          cv_metrics.json and oof_predictions.csv
+ml/plots/            ROC, calibration, confusion, SHAP bars
+backend/app/         FastAPI
+web/                 Next.js app
+docs/REPORT.md       short technical report
+SUBMISSION.md        Devpost text
+DEMO_SCRIPT.md       3 to 5 minute demo
+```

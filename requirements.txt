@@ -1,0 +1,15 @@
+numpy==2.5.4
+pandas==3.0.6
+scikit-learn==1.9.1
+scipy==1.18.1
+xgboost==3.4.1
+shap==0.53.0
+matplotlib==3.11.2
+joblib==1.6.0
+fastapi==0.143.0
+uvicorn==0.54.0
+pydantic==2.14.1
+scikit-image==0.26.0
+trimesh==5.1.1
+pytest==9.1.1
+httpx==0.28.1

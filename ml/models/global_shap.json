@@ -1,0 +1,1350 @@
+{
+  "cad": {
+    "space": "probability",
+    "strategy": "tree_probability",
+    "base_value_mean": 0.6829091961775805,
+    "features": [
+      {
+        "feature": "Typical Chest Pain",
+        "label": "Typical chest pain",
+        "group": "Symptoms",
+        "mean_abs_shap": 0.09311207142026759
+      },
+      {
+        "feature": "Region RWMA",
+        "label": "Region with RWMA",
+        "group": "Echo",
+        "mean_abs_shap": 0.04405794572652539
+      },
+      {
+        "feature": "Age",
+        "label": "Age",
+        "group": "Demographics",
+        "mean_abs_shap": 0.04043152324353075
+      },
+      {
+        "feature": "Atypical",
+        "label": "Atypical chest pain",
+        "group": "Symptoms",
+        "mean_abs_shap": 0.035297044880236605
+      },
+      {
+        "feature": "EF-TTE",
+        "label": "Ejection fraction",
+        "group": "Echo",
+        "mean_abs_shap": 0.026007671565325897
+      },
+      {
+        "feature": "FBS",
+        "label": "Fasting blood sugar",
+        "group": "Laboratory",
+        "mean_abs_shap": 0.021955278094583374
+      },
+      {
+        "feature": "TG",
+        "label": "Triglycerides",
+        "group": "Laboratory",
+        "mean_abs_shap": 0.020715223879729152
+      },
+      {
+        "feature": "HTN",
+        "label": "Hypertension",
+        "group": "History",
+        "mean_abs_shap": 0.017716091029749737
+      },
+      {
+        "feature": "Tinversion",
+        "label": "T-wave inversion",
+        "group": "ECG",
+        "mean_abs_shap": 0.015088888482018425
+      },
+      {
+        "feature": "ESR",
+        "label": "ESR",
+        "group": "Laboratory",
+        "mean_abs_shap": 0.01498265741182863
+      },
+      {
+        "feature": "DM",
+        "label": "Diabetes mellitus",
+        "group": "History",
+        "mean_abs_shap": 0.014099432246731412
+      },
+      {
+        "feature": "BP",
+        "label": "Blood pressure",
+        "group": "Exam",
+        "mean_abs_shap": 0.014065216313782592
+      },
+      {
+        "feature": "K",
+        "label": "Potassium",
+        "group": "Laboratory",
+        "mean_abs_shap": 0.010769408440973191
+      },
+      {
+        "feature": "Neut",
+        "label": "Neutrophils",
+        "group": "Laboratory",
+        "mean_abs_shap": 0.006810477282694535
+      },
+      {
+        "feature": "BMI",
+        "label": "BMI",
+        "group": "Demographics",
+        "mean_abs_shap": 0.006705806146110224
+      },
+      {
+        "feature": "Nonanginal",
+        "label": "Nonanginal pain",
+        "group": "Symptoms",
+        "mean_abs_shap": 0.006587119033055352
+      },
+      {
+        "feature": "PR",
+        "label": "Pulse rate",
+        "group": "Exam",
+        "mean_abs_shap": 0.006217112969788147
+      },
+      {
+        "feature": "Dyspnea",
+        "label": "Dyspnea",
+        "group": "Symptoms",
+        "mean_abs_shap": 0.005535906912231875
+      },
+      {
+        "feature": "CR",
+        "label": "Creatinine",
+        "group": "Laboratory",
+        "mean_abs_shap": 0.005006591679113229
+      },
+      {
+        "feature": "Na",
+        "label": "Sodium",
+        "group": "Laboratory",
+        "mean_abs_shap": 0.004966038433959112
+      },
+      {
+        "feature": "PLT",
+        "label": "Platelets",
+        "group": "Laboratory",
+        "mean_abs_shap": 0.004905749348111955
+      },
+      {
+        "feature": "Lymph",
+        "label": "Lymphocytes",
+        "group": "Laboratory",
+        "mean_abs_shap": 0.00440523674846809
+      },
+      {
+        "feature": "HDL",
+        "label": "HDL",
+        "group": "Laboratory",
+        "mean_abs_shap": 0.004080632759145747
+      },
+      {
+        "feature": "Weight",
+        "label": "Weight",
+        "group": "Demographics",
+        "mean_abs_shap": 0.003982267112921435
+      },
+      {
+        "feature": "BUN",
+        "label": "BUN",
+        "group": "Laboratory",
+        "mean_abs_shap": 0.003885426231449647
+      },
+      {
+        "feature": "St Depression",
+        "label": "ST depression",
+        "group": "ECG",
+        "mean_abs_shap": 0.003440383580735104
+      },
+      {
+        "feature": "LDL",
+        "label": "LDL",
+        "group": "Laboratory",
+        "mean_abs_shap": 0.0033160616585471737
+      },
+      {
+        "feature": "HB",
+        "label": "Hemoglobin",
+        "group": "Laboratory",
+        "mean_abs_shap": 0.003194160169763043
+      },
+      {
+        "feature": "VHD_score",
+        "label": "Valve disease grade",
+        "group": "Echo",
+        "mean_abs_shap": 0.0028402343297760095
+      },
+      {
+        "feature": "Length",
+        "label": "Height",
+        "group": "Demographics",
+        "mean_abs_shap": 0.002717730315250917
+      },
+      {
+        "feature": "WBC",
+        "label": "WBC",
+        "group": "Laboratory",
+        "mean_abs_shap": 0.002349089444347545
+      },
+      {
+        "feature": "Function Class",
+        "label": "Function class",
+        "group": "Symptoms",
+        "mean_abs_shap": 0.0017109158239989447
+      },
+      {
+        "feature": "Sex_Male",
+        "label": "Sex is male",
+        "group": "Demographics",
+        "mean_abs_shap": 0.0015235453260610873
+      },
+      {
+        "feature": "Current Smoker",
+        "label": "Current smoker",
+        "group": "History",
+        "mean_abs_shap": 0.0009696185143439405
+      },
+      {
+        "feature": "DLP",
+        "label": "Dyslipidemia",
+        "group": "History",
+        "mean_abs_shap": 0.0007809068337552888
+      },
+      {
+        "feature": "Q Wave",
+        "label": "Q wave",
+        "group": "ECG",
+        "mean_abs_shap": 0.0007634750838862285
+      },
+      {
+        "feature": "Systolic Murmur",
+        "label": "Systolic murmur",
+        "group": "Exam",
+        "mean_abs_shap": 0.0004942358685640132
+      },
+      {
+        "feature": "FH",
+        "label": "Family history",
+        "group": "History",
+        "mean_abs_shap": 0.00043633280478158577
+      },
+      {
+        "feature": "Obesity",
+        "label": "Obesity",
+        "group": "History",
+        "mean_abs_shap": 0.000360507341180925
+      },
+      {
+        "feature": "St Elevation",
+        "label": "ST elevation",
+        "group": "ECG",
+        "mean_abs_shap": 0.00034429905084438703
+      },
+      {
+        "feature": "Diastolic Murmur",
+        "label": "Diastolic murmur",
+        "group": "Exam",
+        "mean_abs_shap": 0.00032127882649060977
+      },
+      {
+        "feature": "Edema",
+        "label": "Edema",
+        "group": "Exam",
+        "mean_abs_shap": 0.0001637146919462551
+      },
+      {
+        "feature": "LVH",
+        "label": "LVH",
+        "group": "ECG",
+        "mean_abs_shap": 0.0001551889758884282
+      },
+      {
+        "feature": "Lung rales",
+        "label": "Lung rales",
+        "group": "Exam",
+        "mean_abs_shap": 9.074117612543592e-05
+      },
+      {
+        "feature": "BBB_LBBB",
+        "label": "Left bundle branch block",
+        "group": "ECG",
+        "mean_abs_shap": 8.775399814226525e-05
+      },
+      {
+        "feature": "Poor R Progression",
+        "label": "Poor R progression",
+        "group": "ECG",
+        "mean_abs_shap": 2.779728406869746e-05
+      },
+      {
+        "feature": "Thyroid Disease",
+        "label": "Thyroid disease",
+        "group": "History",
+        "mean_abs_shap": 2.610426397368188e-05
+      },
+      {
+        "feature": "BBB_RBBB",
+        "label": "Right bundle branch block",
+        "group": "ECG",
+        "mean_abs_shap": 1.9350656118386492e-05
+      },
+      {
+        "feature": "Airway disease",
+        "label": "Airway disease",
+        "group": "History",
+        "mean_abs_shap": 1.1368634127558408e-05
+      },
+      {
+        "feature": "EX-Smoker",
+        "label": "Former smoker",
+        "group": "History",
+        "mean_abs_shap": 1.0693585365647985e-05
+      },
+      {
+        "feature": "Weak Peripheral Pulse",
+        "label": "Weak peripheral pulse",
+        "group": "Exam",
+        "mean_abs_shap": 0.0
+      },
+      {
+        "feature": "LowTH Ang",
+        "label": "Low-threshold angina",
+        "group": "Symptoms",
+        "mean_abs_shap": 0.0
+      },
+      {
+        "feature": "CRF",
+        "label": "Chronic renal failure",
+        "group": "History",
+        "mean_abs_shap": 0.0
+      },
+      {
+        "feature": "CHF",
+        "label": "Heart failure",
+        "group": "History",
+        "mean_abs_shap": 0.0
+      },
+      {
+        "feature": "CVA",
+        "label": "Prior CVA",
+        "group": "History",
+        "mean_abs_shap": 0.0
+      }
+    ]
+  },
+  "lad": {
+    "space": "probability",
+    "strategy": "tree_probability",
+    "base_value_mean": 0.5680525168818945,
+    "features": [
+      {
+        "feature": "Typical Chest Pain",
+        "label": "Typical chest pain",
+        "group": "Symptoms",
+        "mean_abs_shap": 0.07252407736253834
+      },
+      {
+        "feature": "Region RWMA",
+        "label": "Region with RWMA",
+        "group": "Echo",
+        "mean_abs_shap": 0.05360654277920059
+      },
+      {
+        "feature": "EF-TTE",
+        "label": "Ejection fraction",
+        "group": "Echo",
+        "mean_abs_shap": 0.03881497520180042
+      },
+      {
+        "feature": "Age",
+        "label": "Age",
+        "group": "Demographics",
+        "mean_abs_shap": 0.03214445725835361
+      },
+      {
+        "feature": "Atypical",
+        "label": "Atypical chest pain",
+        "group": "Symptoms",
+        "mean_abs_shap": 0.027531595757496377
+      },
+      {
+        "feature": "ESR",
+        "label": "ESR",
+        "group": "Laboratory",
+        "mean_abs_shap": 0.018650507752808274
+      },
+      {
+        "feature": "Neut",
+        "label": "Neutrophils",
+        "group": "Laboratory",
+        "mean_abs_shap": 0.013531842994579924
+      },
+      {
+        "feature": "Lymph",
+        "label": "Lymphocytes",
+        "group": "Laboratory",
+        "mean_abs_shap": 0.013120129527090272
+      },
+      {
+        "feature": "TG",
+        "label": "Triglycerides",
+        "group": "Laboratory",
+        "mean_abs_shap": 0.013047626960753546
+      },
+      {
+        "feature": "Tinversion",
+        "label": "T-wave inversion",
+        "group": "ECG",
+        "mean_abs_shap": 0.010386450172826502
+      },
+      {
+        "feature": "BP",
+        "label": "Blood pressure",
+        "group": "Exam",
+        "mean_abs_shap": 0.009985311398485295
+      },
+      {
+        "feature": "WBC",
+        "label": "WBC",
+        "group": "Laboratory",
+        "mean_abs_shap": 0.009940473335959593
+      },
+      {
+        "feature": "FBS",
+        "label": "Fasting blood sugar",
+        "group": "Laboratory",
+        "mean_abs_shap": 0.009651009242215656
+      },
+      {
+        "feature": "PR",
+        "label": "Pulse rate",
+        "group": "Exam",
+        "mean_abs_shap": 0.008531082043621874
+      },
+      {
+        "feature": "HTN",
+        "label": "Hypertension",
+        "group": "History",
+        "mean_abs_shap": 0.008351939293243623
+      },
+      {
+        "feature": "LDL",
+        "label": "LDL",
+        "group": "Laboratory",
+        "mean_abs_shap": 0.006784995471157293
+      },
+      {
+        "feature": "Weight",
+        "label": "Weight",
+        "group": "Demographics",
+        "mean_abs_shap": 0.006485036951004284
+      },
+      {
+        "feature": "BMI",
+        "label": "BMI",
+        "group": "Demographics",
+        "mean_abs_shap": 0.00645082725634699
+      },
+      {
+        "feature": "CR",
+        "label": "Creatinine",
+        "group": "Laboratory",
+        "mean_abs_shap": 0.0060292471933475695
+      },
+      {
+        "feature": "Na",
+        "label": "Sodium",
+        "group": "Laboratory",
+        "mean_abs_shap": 0.0060167043891279385
+      },
+      {
+        "feature": "St Depression",
+        "label": "ST depression",
+        "group": "ECG",
+        "mean_abs_shap": 0.005681000856803852
+      },
+      {
+        "feature": "HDL",
+        "label": "HDL",
+        "group": "Laboratory",
+        "mean_abs_shap": 0.0050813433410081795
+      },
+      {
+        "feature": "PLT",
+        "label": "Platelets",
+        "group": "Laboratory",
+        "mean_abs_shap": 0.005053795737251859
+      },
+      {
+        "feature": "Nonanginal",
+        "label": "Nonanginal pain",
+        "group": "Symptoms",
+        "mean_abs_shap": 0.004960346102924306
+      },
+      {
+        "feature": "K",
+        "label": "Potassium",
+        "group": "Laboratory",
+        "mean_abs_shap": 0.004939996773577629
+      },
+      {
+        "feature": "Length",
+        "label": "Height",
+        "group": "Demographics",
+        "mean_abs_shap": 0.004591156434443093
+      },
+      {
+        "feature": "Dyspnea",
+        "label": "Dyspnea",
+        "group": "Symptoms",
+        "mean_abs_shap": 0.003954419842426485
+      },
+      {
+        "feature": "VHD_score",
+        "label": "Valve disease grade",
+        "group": "Echo",
+        "mean_abs_shap": 0.003514211666778509
+      },
+      {
+        "feature": "BUN",
+        "label": "BUN",
+        "group": "Laboratory",
+        "mean_abs_shap": 0.003356296253847923
+      },
+      {
+        "feature": "Sex_Male",
+        "label": "Sex is male",
+        "group": "Demographics",
+        "mean_abs_shap": 0.003340504401784228
+      },
+      {
+        "feature": "HB",
+        "label": "Hemoglobin",
+        "group": "Laboratory",
+        "mean_abs_shap": 0.003201599725554057
+      },
+      {
+        "feature": "Function Class",
+        "label": "Function class",
+        "group": "Symptoms",
+        "mean_abs_shap": 0.002416913721030556
+      },
+      {
+        "feature": "DM",
+        "label": "Diabetes mellitus",
+        "group": "History",
+        "mean_abs_shap": 0.002336924158107296
+      },
+      {
+        "feature": "Current Smoker",
+        "label": "Current smoker",
+        "group": "History",
+        "mean_abs_shap": 0.0018854973626380438
+      },
+      {
+        "feature": "DLP",
+        "label": "Dyslipidemia",
+        "group": "History",
+        "mean_abs_shap": 0.0015561941591264285
+      },
+      {
+        "feature": "St Elevation",
+        "label": "ST elevation",
+        "group": "ECG",
+        "mean_abs_shap": 0.0011332195873740196
+      },
+      {
+        "feature": "Obesity",
+        "label": "Obesity",
+        "group": "History",
+        "mean_abs_shap": 0.0009466870769185914
+      },
+      {
+        "feature": "FH",
+        "label": "Family history",
+        "group": "History",
+        "mean_abs_shap": 0.0009025873919722921
+      },
+      {
+        "feature": "Q Wave",
+        "label": "Q wave",
+        "group": "ECG",
+        "mean_abs_shap": 0.0007969003488624099
+      },
+      {
+        "feature": "Diastolic Murmur",
+        "label": "Diastolic murmur",
+        "group": "Exam",
+        "mean_abs_shap": 0.00045805150201174767
+      },
+      {
+        "feature": "Systolic Murmur",
+        "label": "Systolic murmur",
+        "group": "Exam",
+        "mean_abs_shap": 0.00033189523626412325
+      },
+      {
+        "feature": "EX-Smoker",
+        "label": "Former smoker",
+        "group": "History",
+        "mean_abs_shap": 0.00014988251512375233
+      },
+      {
+        "feature": "Edema",
+        "label": "Edema",
+        "group": "Exam",
+        "mean_abs_shap": 0.00012463637106073524
+      },
+      {
+        "feature": "Lung rales",
+        "label": "Lung rales",
+        "group": "Exam",
+        "mean_abs_shap": 8.28211337948262e-05
+      },
+      {
+        "feature": "BBB_LBBB",
+        "label": "Left bundle branch block",
+        "group": "ECG",
+        "mean_abs_shap": 5.941427845617169e-05
+      },
+      {
+        "feature": "LVH",
+        "label": "LVH",
+        "group": "ECG",
+        "mean_abs_shap": 4.849046979629884e-05
+      },
+      {
+        "feature": "Poor R Progression",
+        "label": "Poor R progression",
+        "group": "ECG",
+        "mean_abs_shap": 3.841132869392252e-05
+      },
+      {
+        "feature": "BBB_RBBB",
+        "label": "Right bundle branch block",
+        "group": "ECG",
+        "mean_abs_shap": 2.5992019629976533e-05
+      },
+      {
+        "feature": "Thyroid Disease",
+        "label": "Thyroid disease",
+        "group": "History",
+        "mean_abs_shap": 1.0352799570010325e-05
+      },
+      {
+        "feature": "LowTH Ang",
+        "label": "Low-threshold angina",
+        "group": "Symptoms",
+        "mean_abs_shap": 0.0
+      },
+      {
+        "feature": "Weak Peripheral Pulse",
+        "label": "Weak peripheral pulse",
+        "group": "Exam",
+        "mean_abs_shap": 0.0
+      },
+      {
+        "feature": "CRF",
+        "label": "Chronic renal failure",
+        "group": "History",
+        "mean_abs_shap": 0.0
+      },
+      {
+        "feature": "CHF",
+        "label": "Heart failure",
+        "group": "History",
+        "mean_abs_shap": 0.0
+      },
+      {
+        "feature": "Airway disease",
+        "label": "Airway disease",
+        "group": "History",
+        "mean_abs_shap": 0.0
+      },
+      {
+        "feature": "CVA",
+        "label": "Prior CVA",
+        "group": "History",
+        "mean_abs_shap": 0.0
+      }
+    ]
+  },
+  "lcx": {
+    "space": "probability",
+    "strategy": "tree_probability",
+    "base_value_mean": 0.45922880995870724,
+    "features": [
+      {
+        "feature": "Age",
+        "label": "Age",
+        "group": "Demographics",
+        "mean_abs_shap": 0.053216709732414866
+      },
+      {
+        "feature": "Typical Chest Pain",
+        "label": "Typical chest pain",
+        "group": "Symptoms",
+        "mean_abs_shap": 0.04332670664349734
+      },
+      {
+        "feature": "TG",
+        "label": "Triglycerides",
+        "group": "Laboratory",
+        "mean_abs_shap": 0.024053715185795063
+      },
+      {
+        "feature": "PLT",
+        "label": "Platelets",
+        "group": "Laboratory",
+        "mean_abs_shap": 0.02056480504772771
+      },
+      {
+        "feature": "CR",
+        "label": "Creatinine",
+        "group": "Laboratory",
+        "mean_abs_shap": 0.019138332678679464
+      },
+      {
+        "feature": "FBS",
+        "label": "Fasting blood sugar",
+        "group": "Laboratory",
+        "mean_abs_shap": 0.017282851841764757
+      },
+      {
+        "feature": "BP",
+        "label": "Blood pressure",
+        "group": "Exam",
+        "mean_abs_shap": 0.016934357582378264
+      },
+      {
+        "feature": "ESR",
+        "label": "ESR",
+        "group": "Laboratory",
+        "mean_abs_shap": 0.011805349321855212
+      },
+      {
+        "feature": "LDL",
+        "label": "LDL",
+        "group": "Laboratory",
+        "mean_abs_shap": 0.010584096215653321
+      },
+      {
+        "feature": "Na",
+        "label": "Sodium",
+        "group": "Laboratory",
+        "mean_abs_shap": 0.010146852355745166
+      },
+      {
+        "feature": "Length",
+        "label": "Height",
+        "group": "Demographics",
+        "mean_abs_shap": 0.009855634561827337
+      },
+      {
+        "feature": "BMI",
+        "label": "BMI",
+        "group": "Demographics",
+        "mean_abs_shap": 0.008942776874620573
+      },
+      {
+        "feature": "HDL",
+        "label": "HDL",
+        "group": "Laboratory",
+        "mean_abs_shap": 0.008775452787599442
+      },
+      {
+        "feature": "Region RWMA",
+        "label": "Region with RWMA",
+        "group": "Echo",
+        "mean_abs_shap": 0.008400609115912828
+      },
+      {
+        "feature": "BUN",
+        "label": "BUN",
+        "group": "Laboratory",
+        "mean_abs_shap": 0.008279485822877552
+      },
+      {
+        "feature": "EF-TTE",
+        "label": "Ejection fraction",
+        "group": "Echo",
+        "mean_abs_shap": 0.008160293235135502
+      },
+      {
+        "feature": "Atypical",
+        "label": "Atypical chest pain",
+        "group": "Symptoms",
+        "mean_abs_shap": 0.007253654415524669
+      },
+      {
+        "feature": "Weight",
+        "label": "Weight",
+        "group": "Demographics",
+        "mean_abs_shap": 0.007097295388941027
+      },
+      {
+        "feature": "WBC",
+        "label": "WBC",
+        "group": "Laboratory",
+        "mean_abs_shap": 0.006389716762504145
+      },
+      {
+        "feature": "HB",
+        "label": "Hemoglobin",
+        "group": "Laboratory",
+        "mean_abs_shap": 0.0063100320220083736
+      },
+      {
+        "feature": "HTN",
+        "label": "Hypertension",
+        "group": "History",
+        "mean_abs_shap": 0.00607516867734893
+      },
+      {
+        "feature": "Sex_Male",
+        "label": "Sex is male",
+        "group": "Demographics",
+        "mean_abs_shap": 0.005803532444585854
+      },
+      {
+        "feature": "DM",
+        "label": "Diabetes mellitus",
+        "group": "History",
+        "mean_abs_shap": 0.005648214647863314
+      },
+      {
+        "feature": "K",
+        "label": "Potassium",
+        "group": "Laboratory",
+        "mean_abs_shap": 0.005528004006894848
+      },
+      {
+        "feature": "Lymph",
+        "label": "Lymphocytes",
+        "group": "Laboratory",
+        "mean_abs_shap": 0.004970766766450652
+      },
+      {
+        "feature": "Neut",
+        "label": "Neutrophils",
+        "group": "Laboratory",
+        "mean_abs_shap": 0.00427008694256181
+      },
+      {
+        "feature": "Tinversion",
+        "label": "T-wave inversion",
+        "group": "ECG",
+        "mean_abs_shap": 0.0032618114416837498
+      },
+      {
+        "feature": "Function Class",
+        "label": "Function class",
+        "group": "Symptoms",
+        "mean_abs_shap": 0.0028649252087480674
+      },
+      {
+        "feature": "Dyspnea",
+        "label": "Dyspnea",
+        "group": "Symptoms",
+        "mean_abs_shap": 0.0020166736153180566
+      },
+      {
+        "feature": "DLP",
+        "label": "Dyslipidemia",
+        "group": "History",
+        "mean_abs_shap": 0.0019879719005759275
+      },
+      {
+        "feature": "VHD_score",
+        "label": "Valve disease grade",
+        "group": "Echo",
+        "mean_abs_shap": 0.001790142084358006
+      },
+      {
+        "feature": "PR",
+        "label": "Pulse rate",
+        "group": "Exam",
+        "mean_abs_shap": 0.0016766663022715232
+      },
+      {
+        "feature": "Current Smoker",
+        "label": "Current smoker",
+        "group": "History",
+        "mean_abs_shap": 0.0016437737581981744
+      },
+      {
+        "feature": "Systolic Murmur",
+        "label": "Systolic murmur",
+        "group": "Exam",
+        "mean_abs_shap": 0.0006927017154603744
+      },
+      {
+        "feature": "Obesity",
+        "label": "Obesity",
+        "group": "History",
+        "mean_abs_shap": 0.0006395644001295308
+      },
+      {
+        "feature": "St Depression",
+        "label": "ST depression",
+        "group": "ECG",
+        "mean_abs_shap": 0.0005591577114158042
+      },
+      {
+        "feature": "FH",
+        "label": "Family history",
+        "group": "History",
+        "mean_abs_shap": 0.00042882697983417966
+      },
+      {
+        "feature": "Q Wave",
+        "label": "Q wave",
+        "group": "ECG",
+        "mean_abs_shap": 0.0003544257377966566
+      },
+      {
+        "feature": "Nonanginal",
+        "label": "Nonanginal pain",
+        "group": "Symptoms",
+        "mean_abs_shap": 0.0003505600653993789
+      },
+      {
+        "feature": "LVH",
+        "label": "LVH",
+        "group": "ECG",
+        "mean_abs_shap": 0.0003260757377604935
+      },
+      {
+        "feature": "EX-Smoker",
+        "label": "Former smoker",
+        "group": "History",
+        "mean_abs_shap": 0.0002730543586970363
+      },
+      {
+        "feature": "Lung rales",
+        "label": "Lung rales",
+        "group": "Exam",
+        "mean_abs_shap": 0.00023782842436889136
+      },
+      {
+        "feature": "BBB_LBBB",
+        "label": "Left bundle branch block",
+        "group": "ECG",
+        "mean_abs_shap": 0.00016150506383036959
+      },
+      {
+        "feature": "Airway disease",
+        "label": "Airway disease",
+        "group": "History",
+        "mean_abs_shap": 0.00015276379897529067
+      },
+      {
+        "feature": "BBB_RBBB",
+        "label": "Right bundle branch block",
+        "group": "ECG",
+        "mean_abs_shap": 9.38512449510659e-05
+      },
+      {
+        "feature": "St Elevation",
+        "label": "ST elevation",
+        "group": "ECG",
+        "mean_abs_shap": 7.489610686128978e-05
+      },
+      {
+        "feature": "Poor R Progression",
+        "label": "Poor R progression",
+        "group": "ECG",
+        "mean_abs_shap": 6.862654239988776e-05
+      },
+      {
+        "feature": "Thyroid Disease",
+        "label": "Thyroid disease",
+        "group": "History",
+        "mean_abs_shap": 5.990836821483784e-05
+      },
+      {
+        "feature": "Diastolic Murmur",
+        "label": "Diastolic murmur",
+        "group": "Exam",
+        "mean_abs_shap": 3.889548819487011e-05
+      },
+      {
+        "feature": "Edema",
+        "label": "Edema",
+        "group": "Exam",
+        "mean_abs_shap": 3.574019171594689e-05
+      },
+      {
+        "feature": "Weak Peripheral Pulse",
+        "label": "Weak peripheral pulse",
+        "group": "Exam",
+        "mean_abs_shap": 0.0
+      },
+      {
+        "feature": "LowTH Ang",
+        "label": "Low-threshold angina",
+        "group": "Symptoms",
+        "mean_abs_shap": 0.0
+      },
+      {
+        "feature": "CRF",
+        "label": "Chronic renal failure",
+        "group": "History",
+        "mean_abs_shap": 0.0
+      },
+      {
+        "feature": "CHF",
+        "label": "Heart failure",
+        "group": "History",
+        "mean_abs_shap": 0.0
+      },
+      {
+        "feature": "CVA",
+        "label": "Prior CVA",
+        "group": "History",
+        "mean_abs_shap": 0.0
+      }
+    ]
+  },
+  "rca": {
+    "space": "probability",
+    "strategy": "tree_probability",
+    "base_value_mean": 0.4471499707813173,
+    "features": [
+      {
+        "feature": "Typical Chest Pain",
+        "label": "Typical chest pain",
+        "group": "Symptoms",
+        "mean_abs_shap": 0.03662232213119538
+      },
+      {
+        "feature": "Age",
+        "label": "Age",
+        "group": "Demographics",
+        "mean_abs_shap": 0.033253014930188916
+      },
+      {
+        "feature": "DM",
+        "label": "Diabetes mellitus",
+        "group": "History",
+        "mean_abs_shap": 0.03057553763947461
+      },
+      {
+        "feature": "ESR",
+        "label": "ESR",
+        "group": "Laboratory",
+        "mean_abs_shap": 0.02860788595975244
+      },
+      {
+        "feature": "Lymph",
+        "label": "Lymphocytes",
+        "group": "Laboratory",
+        "mean_abs_shap": 0.024869884175656033
+      },
+      {
+        "feature": "Neut",
+        "label": "Neutrophils",
+        "group": "Laboratory",
+        "mean_abs_shap": 0.02425437868079831
+      },
+      {
+        "feature": "Atypical",
+        "label": "Atypical chest pain",
+        "group": "Symptoms",
+        "mean_abs_shap": 0.0191851717158304
+      },
+      {
+        "feature": "FBS",
+        "label": "Fasting blood sugar",
+        "group": "Laboratory",
+        "mean_abs_shap": 0.015479460258760592
+      },
+      {
+        "feature": "WBC",
+        "label": "WBC",
+        "group": "Laboratory",
+        "mean_abs_shap": 0.013951195733177844
+      },
+      {
+        "feature": "TG",
+        "label": "Triglycerides",
+        "group": "Laboratory",
+        "mean_abs_shap": 0.013804504761605373
+      },
+      {
+        "feature": "Length",
+        "label": "Height",
+        "group": "Demographics",
+        "mean_abs_shap": 0.012481178994868896
+      },
+      {
+        "feature": "Sex_Male",
+        "label": "Sex is male",
+        "group": "Demographics",
+        "mean_abs_shap": 0.008566687564610915
+      },
+      {
+        "feature": "BMI",
+        "label": "BMI",
+        "group": "Demographics",
+        "mean_abs_shap": 0.007798603524004675
+      },
+      {
+        "feature": "Na",
+        "label": "Sodium",
+        "group": "Laboratory",
+        "mean_abs_shap": 0.007483859412855876
+      },
+      {
+        "feature": "CR",
+        "label": "Creatinine",
+        "group": "Laboratory",
+        "mean_abs_shap": 0.007052837569339099
+      },
+      {
+        "feature": "Dyspnea",
+        "label": "Dyspnea",
+        "group": "Symptoms",
+        "mean_abs_shap": 0.006630584470216709
+      },
+      {
+        "feature": "PLT",
+        "label": "Platelets",
+        "group": "Laboratory",
+        "mean_abs_shap": 0.006570375306769377
+      },
+      {
+        "feature": "HB",
+        "label": "Hemoglobin",
+        "group": "Laboratory",
+        "mean_abs_shap": 0.006398803696314808
+      },
+      {
+        "feature": "Weight",
+        "label": "Weight",
+        "group": "Demographics",
+        "mean_abs_shap": 0.006398154244386337
+      },
+      {
+        "feature": "HTN",
+        "label": "Hypertension",
+        "group": "History",
+        "mean_abs_shap": 0.006329285110556403
+      },
+      {
+        "feature": "K",
+        "label": "Potassium",
+        "group": "Laboratory",
+        "mean_abs_shap": 0.0057368107600212674
+      },
+      {
+        "feature": "Function Class",
+        "label": "Function class",
+        "group": "Symptoms",
+        "mean_abs_shap": 0.005610654957944662
+      },
+      {
+        "feature": "EF-TTE",
+        "label": "Ejection fraction",
+        "group": "Echo",
+        "mean_abs_shap": 0.005517055726568498
+      },
+      {
+        "feature": "HDL",
+        "label": "HDL",
+        "group": "Laboratory",
+        "mean_abs_shap": 0.005307376169947203
+      },
+      {
+        "feature": "LDL",
+        "label": "LDL",
+        "group": "Laboratory",
+        "mean_abs_shap": 0.004998926667848961
+      },
+      {
+        "feature": "BP",
+        "label": "Blood pressure",
+        "group": "Exam",
+        "mean_abs_shap": 0.004955012115705479
+      },
+      {
+        "feature": "PR",
+        "label": "Pulse rate",
+        "group": "Exam",
+        "mean_abs_shap": 0.004528036116175249
+      },
+      {
+        "feature": "BUN",
+        "label": "BUN",
+        "group": "Laboratory",
+        "mean_abs_shap": 0.0034651546286022833
+      },
+      {
+        "feature": "VHD_score",
+        "label": "Valve disease grade",
+        "group": "Echo",
+        "mean_abs_shap": 0.0027812625481450273
+      },
+      {
+        "feature": "Nonanginal",
+        "label": "Nonanginal pain",
+        "group": "Symptoms",
+        "mean_abs_shap": 0.002422196706543811
+      },
+      {
+        "feature": "Tinversion",
+        "label": "T-wave inversion",
+        "group": "ECG",
+        "mean_abs_shap": 0.002194053498473008
+      },
+      {
+        "feature": "Region RWMA",
+        "label": "Region with RWMA",
+        "group": "Echo",
+        "mean_abs_shap": 0.0018749312266993208
+      },
+      {
+        "feature": "Current Smoker",
+        "label": "Current smoker",
+        "group": "History",
+        "mean_abs_shap": 0.001537915979989751
+      },
+      {
+        "feature": "FH",
+        "label": "Family history",
+        "group": "History",
+        "mean_abs_shap": 0.0011139647080356696
+      },
+      {
+        "feature": "St Depression",
+        "label": "ST depression",
+        "group": "ECG",
+        "mean_abs_shap": 0.0009498006606880838
+      },
+      {
+        "feature": "DLP",
+        "label": "Dyslipidemia",
+        "group": "History",
+        "mean_abs_shap": 0.0008369295269423548
+      },
+      {
+        "feature": "Q Wave",
+        "label": "Q wave",
+        "group": "ECG",
+        "mean_abs_shap": 0.0005766157526056119
+      },
+      {
+        "feature": "Obesity",
+        "label": "Obesity",
+        "group": "History",
+        "mean_abs_shap": 0.0004975222063418264
+      },
+      {
+        "feature": "LVH",
+        "label": "LVH",
+        "group": "ECG",
+        "mean_abs_shap": 0.0004657399732169439
+      },
+      {
+        "feature": "Systolic Murmur",
+        "label": "Systolic murmur",
+        "group": "Exam",
+        "mean_abs_shap": 0.00041927199349051715
+      },
+      {
+        "feature": "Poor R Progression",
+        "label": "Poor R progression",
+        "group": "ECG",
+        "mean_abs_shap": 0.00041022625057131535
+      },
+      {
+        "feature": "Diastolic Murmur",
+        "label": "Diastolic murmur",
+        "group": "Exam",
+        "mean_abs_shap": 0.0003384999895900096
+      },
+      {
+        "feature": "EX-Smoker",
+        "label": "Former smoker",
+        "group": "History",
+        "mean_abs_shap": 0.0001292988927952717
+      },
+      {
+        "feature": "Lung rales",
+        "label": "Lung rales",
+        "group": "Exam",
+        "mean_abs_shap": 9.766071676410863e-05
+      },
+      {
+        "feature": "St Elevation",
+        "label": "ST elevation",
+        "group": "ECG",
+        "mean_abs_shap": 8.791134426812387e-05
+      },
+      {
+        "feature": "Airway disease",
+        "label": "Airway disease",
+        "group": "History",
+        "mean_abs_shap": 5.234143245495935e-05
+      },
+      {
+        "feature": "CRF",
+        "label": "Chronic renal failure",
+        "group": "History",
+        "mean_abs_shap": 2.460815095179976e-05
+      },
+      {
+        "feature": "BBB_RBBB",
+        "label": "Right bundle branch block",
+        "group": "ECG",
+        "mean_abs_shap": 0.0
+      },
+      {
+        "feature": "BBB_LBBB",
+        "label": "Left bundle branch block",
+        "group": "ECG",
+        "mean_abs_shap": 0.0
+      },
+      {
+        "feature": "Weak Peripheral Pulse",
+        "label": "Weak peripheral pulse",
+        "group": "Exam",
+        "mean_abs_shap": 0.0
+      },
+      {
+        "feature": "Edema",
+        "label": "Edema",
+        "group": "Exam",
+        "mean_abs_shap": 0.0
+      },
+      {
+        "feature": "LowTH Ang",
+        "label": "Low-threshold angina",
+        "group": "Symptoms",
+        "mean_abs_shap": 0.0
+      },
+      {
+        "feature": "Thyroid Disease",
+        "label": "Thyroid disease",
+        "group": "History",
+        "mean_abs_shap": 0.0
+      },
+      {
+        "feature": "CVA",
+        "label": "Prior CVA",
+        "group": "History",
+        "mean_abs_shap": 0.0
+      },
+      {
+        "feature": "CHF",
+        "label": "Heart failure",
+        "group": "History",
+        "mean_abs_shap": 0.0
+      }
+    ]
+  }
+}

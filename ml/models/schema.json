@@ -1,0 +1,1440 @@
+{
+  "dataset": {
+    "name": "extention of Z-Alizadeh sani dataset",
+    "uci_id": 411,
+    "doi": "10.24432/C5461K",
+    "rows": 303,
+    "sha256": "b60472ecebdd4ea11d09b8a793711b8da2051fdf79eeae5b88f33269e4a02d37",
+    "source_csv": "ml/data/z_alizadeh_extension.csv"
+  },
+  "leakage_columns_excluded": [
+    "LAD",
+    "LCX",
+    "RCA",
+    "Cath"
+  ],
+  "dropped_constant_columns": [
+    "Exertional CP"
+  ],
+  "threshold": 0.5,
+  "selected_model": "random_forest",
+  "shap_space": {
+    "cad": "probability",
+    "lad": "probability",
+    "lcx": "probability",
+    "rca": "probability"
+  },
+  "groups": [
+    {
+      "id": "Demographics",
+      "description": "Age, sex, and body size."
+    },
+    {
+      "id": "History",
+      "description": "Diagnoses and risk factors already on the chart."
+    },
+    {
+      "id": "Symptoms",
+      "description": "Chest pain pattern and functional class."
+    },
+    {
+      "id": "Exam",
+      "description": "Bedside cardiovascular findings."
+    },
+    {
+      "id": "ECG",
+      "description": "Electrical findings that can travel with ischemia."
+    },
+    {
+      "id": "Laboratory",
+      "description": "Sugar, lipids, kidney labs, and blood counts."
+    },
+    {
+      "id": "Echo",
+      "description": "Pump function, wall motion, and valves."
+    }
+  ],
+  "inputs": [
+    {
+      "key": "Age",
+      "label": "Age",
+      "group": "Demographics",
+      "kind": "number",
+      "unit": "years",
+      "step": 1,
+      "help": "Age in years.",
+      "train_min": 30.0,
+      "train_max": 86.0,
+      "train_median": 58.0
+    },
+    {
+      "key": "Sex",
+      "label": "Sex",
+      "group": "Demographics",
+      "kind": "select",
+      "options": [
+        "Female",
+        "Male"
+      ],
+      "help": "The source file spells female as Fmale. CardioLens stores Female."
+    },
+    {
+      "key": "Weight",
+      "label": "Weight",
+      "group": "Demographics",
+      "kind": "number",
+      "unit": "kg",
+      "step": 1,
+      "help": "Body weight.",
+      "train_min": 48.0,
+      "train_max": 120.0,
+      "train_median": 74.0
+    },
+    {
+      "key": "Length",
+      "label": "Height",
+      "group": "Demographics",
+      "kind": "number",
+      "unit": "cm",
+      "step": 1,
+      "help": "The source column is named Length. It is height in centimeters.",
+      "train_min": 140.0,
+      "train_max": 188.0,
+      "train_median": 165.0
+    },
+    {
+      "key": "BMI",
+      "label": "BMI",
+      "group": "Demographics",
+      "kind": "number",
+      "unit": "kg/m2",
+      "step": 0.1,
+      "derived": true,
+      "help": "Body mass index. The form recalculates it from height and weight when either changes.",
+      "train_min": 18.115412710007305,
+      "train_max": 40.90065778377467,
+      "train_median": 26.775510204081638
+    },
+    {
+      "key": "DM",
+      "label": "Diabetes mellitus",
+      "group": "History",
+      "kind": "binary",
+      "true_value": 1,
+      "false_value": 0,
+      "help": "Recorded history of diabetes.",
+      "true_count": 90
+    },
+    {
+      "key": "HTN",
+      "label": "Hypertension",
+      "group": "History",
+      "kind": "binary",
+      "true_value": 1,
+      "false_value": 0,
+      "help": "Recorded history of hypertension.",
+      "true_count": 179
+    },
+    {
+      "key": "Current Smoker",
+      "label": "Current smoker",
+      "group": "History",
+      "kind": "binary",
+      "true_value": 1,
+      "false_value": 0,
+      "help": "Smokes at the time of the record.",
+      "true_count": 63
+    },
+    {
+      "key": "EX-Smoker",
+      "label": "Former smoker",
+      "group": "History",
+      "kind": "binary",
+      "true_value": 1,
+      "false_value": 0,
+      "help": "Source column EX-Smoker.",
+      "true_count": 10
+    },
+    {
+      "key": "FH",
+      "label": "Family history",
+      "group": "History",
+      "kind": "binary",
+      "true_value": 1,
+      "false_value": 0,
+      "help": "Family history of coronary disease, as recorded.",
+      "true_count": 48
+    },
+    {
+      "key": "Obesity",
+      "label": "Obesity",
+      "group": "History",
+      "kind": "binary",
+      "true_value": "Y",
+      "false_value": "N",
+      "help": "Obesity flag from the source record.",
+      "true_count": 211
+    },
+    {
+      "key": "CRF",
+      "label": "Chronic renal failure",
+      "group": "History",
+      "kind": "binary",
+      "true_value": "Y",
+      "false_value": "N",
+      "help": "Chronic renal failure.",
+      "true_count": 6
+    },
+    {
+      "key": "CVA",
+      "label": "Prior CVA",
+      "group": "History",
+      "kind": "binary",
+      "true_value": "Y",
+      "false_value": "N",
+      "help": "Prior cerebrovascular accident.",
+      "true_count": 5
+    },
+    {
+      "key": "Airway disease",
+      "label": "Airway disease",
+      "group": "History",
+      "kind": "binary",
+      "true_value": "Y",
+      "false_value": "N",
+      "help": "Recorded airway disease.",
+      "true_count": 11
+    },
+    {
+      "key": "Thyroid Disease",
+      "label": "Thyroid disease",
+      "group": "History",
+      "kind": "binary",
+      "true_value": "Y",
+      "false_value": "N",
+      "help": "Recorded thyroid disease.",
+      "true_count": 7
+    },
+    {
+      "key": "CHF",
+      "label": "Heart failure",
+      "group": "History",
+      "kind": "binary",
+      "true_value": "Y",
+      "false_value": "N",
+      "help": "Congestive heart failure.",
+      "true_count": 1
+    },
+    {
+      "key": "DLP",
+      "label": "Dyslipidemia",
+      "group": "History",
+      "kind": "binary",
+      "true_value": "Y",
+      "false_value": "N",
+      "help": "Dyslipidemia flag.",
+      "true_count": 112
+    },
+    {
+      "key": "Typical Chest Pain",
+      "label": "Typical chest pain",
+      "group": "Symptoms",
+      "kind": "binary",
+      "true_value": 1,
+      "false_value": 0,
+      "help": "Typical anginal chest pain.",
+      "true_count": 164
+    },
+    {
+      "key": "Dyspnea",
+      "label": "Dyspnea",
+      "group": "Symptoms",
+      "kind": "binary",
+      "true_value": "Y",
+      "false_value": "N",
+      "help": "Shortness of breath.",
+      "true_count": 134
+    },
+    {
+      "key": "Function Class",
+      "label": "Function class",
+      "group": "Symptoms",
+      "kind": "select",
+      "options": [
+        "0",
+        "1",
+        "2",
+        "3"
+      ],
+      "help": "Functional class as coded in the source file, 0 through 3."
+    },
+    {
+      "key": "Atypical",
+      "label": "Atypical chest pain",
+      "group": "Symptoms",
+      "kind": "binary",
+      "true_value": "Y",
+      "false_value": "N",
+      "help": "Atypical chest pain.",
+      "true_count": 93
+    },
+    {
+      "key": "Nonanginal",
+      "label": "Nonanginal pain",
+      "group": "Symptoms",
+      "kind": "binary",
+      "true_value": "Y",
+      "false_value": "N",
+      "help": "Nonanginal chest pain.",
+      "true_count": 16
+    },
+    {
+      "key": "LowTH Ang",
+      "label": "Low-threshold angina",
+      "group": "Symptoms",
+      "kind": "binary",
+      "true_value": "Y",
+      "false_value": "N",
+      "help": "Source column LowTH Ang.",
+      "true_count": 2
+    },
+    {
+      "key": "BP",
+      "label": "Blood pressure",
+      "group": "Exam",
+      "kind": "number",
+      "unit": "mmHg",
+      "step": 1,
+      "help": "Single blood pressure value from the source file. The recorded range matches systolic readings.",
+      "train_min": 90.0,
+      "train_max": 190.0,
+      "train_median": 130.0
+    },
+    {
+      "key": "PR",
+      "label": "Pulse rate",
+      "group": "Exam",
+      "kind": "number",
+      "unit": "bpm",
+      "step": 1,
+      "help": "Pulse rate.",
+      "train_min": 50.0,
+      "train_max": 110.0,
+      "train_median": 70.0
+    },
+    {
+      "key": "Edema",
+      "label": "Edema",
+      "group": "Exam",
+      "kind": "binary",
+      "true_value": 1,
+      "false_value": 0,
+      "help": "Edema on exam.",
+      "true_count": 12
+    },
+    {
+      "key": "Weak Peripheral Pulse",
+      "label": "Weak peripheral pulse",
+      "group": "Exam",
+      "kind": "binary",
+      "true_value": "Y",
+      "false_value": "N",
+      "help": "Weak peripheral pulse.",
+      "true_count": 5
+    },
+    {
+      "key": "Lung rales",
+      "label": "Lung rales",
+      "group": "Exam",
+      "kind": "binary",
+      "true_value": "Y",
+      "false_value": "N",
+      "help": "Rales on lung exam.",
+      "true_count": 11
+    },
+    {
+      "key": "Systolic Murmur",
+      "label": "Systolic murmur",
+      "group": "Exam",
+      "kind": "binary",
+      "true_value": "Y",
+      "false_value": "N",
+      "help": "Systolic murmur.",
+      "true_count": 41
+    },
+    {
+      "key": "Diastolic Murmur",
+      "label": "Diastolic murmur",
+      "group": "Exam",
+      "kind": "binary",
+      "true_value": "Y",
+      "false_value": "N",
+      "help": "Diastolic murmur.",
+      "true_count": 9
+    },
+    {
+      "key": "Q Wave",
+      "label": "Q wave",
+      "group": "ECG",
+      "kind": "binary",
+      "true_value": 1,
+      "false_value": 0,
+      "help": "Pathologic Q wave flag.",
+      "true_count": 16
+    },
+    {
+      "key": "St Elevation",
+      "label": "ST elevation",
+      "group": "ECG",
+      "kind": "binary",
+      "true_value": 1,
+      "false_value": 0,
+      "help": "ST elevation flag.",
+      "true_count": 14
+    },
+    {
+      "key": "St Depression",
+      "label": "ST depression",
+      "group": "ECG",
+      "kind": "binary",
+      "true_value": 1,
+      "false_value": 0,
+      "help": "ST depression flag.",
+      "true_count": 71
+    },
+    {
+      "key": "Tinversion",
+      "label": "T-wave inversion",
+      "group": "ECG",
+      "kind": "binary",
+      "true_value": 1,
+      "false_value": 0,
+      "help": "Source column Tinversion.",
+      "true_count": 90
+    },
+    {
+      "key": "LVH",
+      "label": "LVH",
+      "group": "ECG",
+      "kind": "binary",
+      "true_value": "Y",
+      "false_value": "N",
+      "help": "Left ventricular hypertrophy on ECG.",
+      "true_count": 20
+    },
+    {
+      "key": "Poor R Progression",
+      "label": "Poor R progression",
+      "group": "ECG",
+      "kind": "binary",
+      "true_value": "Y",
+      "false_value": "N",
+      "help": "Poor R-wave progression.",
+      "true_count": 9
+    },
+    {
+      "key": "BBB",
+      "label": "Bundle branch block",
+      "group": "ECG",
+      "kind": "select",
+      "options": [
+        "N",
+        "LBBB",
+        "RBBB"
+      ],
+      "help": "None, left bundle branch block, or right bundle branch block."
+    },
+    {
+      "key": "FBS",
+      "label": "Fasting blood sugar",
+      "group": "Laboratory",
+      "kind": "number",
+      "unit": "mg/dL",
+      "step": 1,
+      "help": "Fasting blood sugar.",
+      "train_min": 62.0,
+      "train_max": 400.0,
+      "train_median": 98.0
+    },
+    {
+      "key": "CR",
+      "label": "Creatinine",
+      "group": "Laboratory",
+      "kind": "number",
+      "unit": "mg/dL",
+      "step": 0.1,
+      "help": "Serum creatinine.",
+      "train_min": 0.5,
+      "train_max": 2.2,
+      "train_median": 1.0
+    },
+    {
+      "key": "TG",
+      "label": "Triglycerides",
+      "group": "Laboratory",
+      "kind": "number",
+      "unit": "mg/dL",
+      "step": 1,
+      "help": "Triglycerides.",
+      "train_min": 37.0,
+      "train_max": 1050.0,
+      "train_median": 122.0
+    },
+    {
+      "key": "LDL",
+      "label": "LDL",
+      "group": "Laboratory",
+      "kind": "number",
+      "unit": "mg/dL",
+      "step": 1,
+      "help": "LDL cholesterol.",
+      "train_min": 18.0,
+      "train_max": 232.0,
+      "train_median": 100.0
+    },
+    {
+      "key": "HDL",
+      "label": "HDL",
+      "group": "Laboratory",
+      "kind": "number",
+      "unit": "mg/dL",
+      "step": 0.1,
+      "help": "HDL cholesterol.",
+      "train_min": 15.9,
+      "train_max": 111.0,
+      "train_median": 39.0
+    },
+    {
+      "key": "BUN",
+      "label": "BUN",
+      "group": "Laboratory",
+      "kind": "number",
+      "unit": "mg/dL",
+      "step": 1,
+      "help": "Blood urea nitrogen.",
+      "train_min": 6.0,
+      "train_max": 52.0,
+      "train_median": 16.0
+    },
+    {
+      "key": "ESR",
+      "label": "ESR",
+      "group": "Laboratory",
+      "kind": "number",
+      "unit": "mm/h",
+      "step": 1,
+      "help": "Erythrocyte sedimentation rate.",
+      "train_min": 1.0,
+      "train_max": 90.0,
+      "train_median": 15.0
+    },
+    {
+      "key": "HB",
+      "label": "Hemoglobin",
+      "group": "Laboratory",
+      "kind": "number",
+      "unit": "g/dL",
+      "step": 0.1,
+      "help": "Hemoglobin.",
+      "train_min": 8.9,
+      "train_max": 17.6,
+      "train_median": 13.2
+    },
+    {
+      "key": "K",
+      "label": "Potassium",
+      "group": "Laboratory",
+      "kind": "number",
+      "unit": "mEq/L",
+      "step": 0.1,
+      "help": "Serum potassium.",
+      "train_min": 3.0,
+      "train_max": 6.6,
+      "train_median": 4.2
+    },
+    {
+      "key": "Na",
+      "label": "Sodium",
+      "group": "Laboratory",
+      "kind": "number",
+      "unit": "mEq/L",
+      "step": 1,
+      "help": "Serum sodium.",
+      "train_min": 128.0,
+      "train_max": 156.0,
+      "train_median": 141.0
+    },
+    {
+      "key": "WBC",
+      "label": "WBC",
+      "group": "Laboratory",
+      "kind": "number",
+      "unit": "per uL",
+      "step": 100,
+      "help": "White blood cell count.",
+      "train_min": 3700.0,
+      "train_max": 18000.0,
+      "train_median": 7100.0
+    },
+    {
+      "key": "Lymph",
+      "label": "Lymphocytes",
+      "group": "Laboratory",
+      "kind": "number",
+      "unit": "%",
+      "step": 1,
+      "help": "Lymphocyte percent.",
+      "train_min": 7.0,
+      "train_max": 60.0,
+      "train_median": 32.0
+    },
+    {
+      "key": "Neut",
+      "label": "Neutrophils",
+      "group": "Laboratory",
+      "kind": "number",
+      "unit": "%",
+      "step": 1,
+      "help": "Neutrophil percent.",
+      "train_min": 32.0,
+      "train_max": 89.0,
+      "train_median": 60.0
+    },
+    {
+      "key": "PLT",
+      "label": "Platelets",
+      "group": "Laboratory",
+      "kind": "number",
+      "unit": "10^3/uL",
+      "step": 1,
+      "help": "Platelet count. Source values are in the thousands per microliter.",
+      "train_min": 25.0,
+      "train_max": 742.0,
+      "train_median": 210.0
+    },
+    {
+      "key": "EF-TTE",
+      "label": "Ejection fraction",
+      "group": "Echo",
+      "kind": "number",
+      "unit": "%",
+      "step": 1,
+      "help": "Left ventricular ejection fraction by transthoracic echo.",
+      "train_min": 15.0,
+      "train_max": 60.0,
+      "train_median": 50.0
+    },
+    {
+      "key": "Region RWMA",
+      "label": "Region with RWMA",
+      "group": "Echo",
+      "kind": "select",
+      "options": [
+        "0",
+        "1",
+        "2",
+        "3",
+        "4"
+      ],
+      "help": "Regional wall motion abnormality code from echo. This is a clinical feature, not a 3D lesion map."
+    },
+    {
+      "key": "VHD",
+      "label": "Valve disease",
+      "group": "Echo",
+      "kind": "select",
+      "options": [
+        "N",
+        "mild",
+        "Moderate",
+        "Severe"
+      ],
+      "help": "Valvular heart disease grade as coded in the source file."
+    }
+  ],
+  "encoded_features": [
+    {
+      "key": "Age",
+      "label": "Age",
+      "group": "Demographics",
+      "source": "Age"
+    },
+    {
+      "key": "Sex_Male",
+      "label": "Sex is male",
+      "group": "Demographics",
+      "source": "Sex"
+    },
+    {
+      "key": "Weight",
+      "label": "Weight",
+      "group": "Demographics",
+      "source": "Weight"
+    },
+    {
+      "key": "Length",
+      "label": "Height",
+      "group": "Demographics",
+      "source": "Length"
+    },
+    {
+      "key": "BMI",
+      "label": "BMI",
+      "group": "Demographics",
+      "source": "BMI"
+    },
+    {
+      "key": "DM",
+      "label": "Diabetes mellitus",
+      "group": "History",
+      "source": "DM"
+    },
+    {
+      "key": "HTN",
+      "label": "Hypertension",
+      "group": "History",
+      "source": "HTN"
+    },
+    {
+      "key": "Current Smoker",
+      "label": "Current smoker",
+      "group": "History",
+      "source": "Current Smoker"
+    },
+    {
+      "key": "EX-Smoker",
+      "label": "Former smoker",
+      "group": "History",
+      "source": "EX-Smoker"
+    },
+    {
+      "key": "FH",
+      "label": "Family history",
+      "group": "History",
+      "source": "FH"
+    },
+    {
+      "key": "Obesity",
+      "label": "Obesity",
+      "group": "History",
+      "source": "Obesity"
+    },
+    {
+      "key": "CRF",
+      "label": "Chronic renal failure",
+      "group": "History",
+      "source": "CRF"
+    },
+    {
+      "key": "CVA",
+      "label": "Prior CVA",
+      "group": "History",
+      "source": "CVA"
+    },
+    {
+      "key": "Airway disease",
+      "label": "Airway disease",
+      "group": "History",
+      "source": "Airway disease"
+    },
+    {
+      "key": "Thyroid Disease",
+      "label": "Thyroid disease",
+      "group": "History",
+      "source": "Thyroid Disease"
+    },
+    {
+      "key": "CHF",
+      "label": "Heart failure",
+      "group": "History",
+      "source": "CHF"
+    },
+    {
+      "key": "DLP",
+      "label": "Dyslipidemia",
+      "group": "History",
+      "source": "DLP"
+    },
+    {
+      "key": "Typical Chest Pain",
+      "label": "Typical chest pain",
+      "group": "Symptoms",
+      "source": "Typical Chest Pain"
+    },
+    {
+      "key": "Dyspnea",
+      "label": "Dyspnea",
+      "group": "Symptoms",
+      "source": "Dyspnea"
+    },
+    {
+      "key": "Function Class",
+      "label": "Function class",
+      "group": "Symptoms",
+      "source": "Function Class"
+    },
+    {
+      "key": "Atypical",
+      "label": "Atypical chest pain",
+      "group": "Symptoms",
+      "source": "Atypical"
+    },
+    {
+      "key": "Nonanginal",
+      "label": "Nonanginal pain",
+      "group": "Symptoms",
+      "source": "Nonanginal"
+    },
+    {
+      "key": "LowTH Ang",
+      "label": "Low-threshold angina",
+      "group": "Symptoms",
+      "source": "LowTH Ang"
+    },
+    {
+      "key": "BP",
+      "label": "Blood pressure",
+      "group": "Exam",
+      "source": "BP"
+    },
+    {
+      "key": "PR",
+      "label": "Pulse rate",
+      "group": "Exam",
+      "source": "PR"
+    },
+    {
+      "key": "Edema",
+      "label": "Edema",
+      "group": "Exam",
+      "source": "Edema"
+    },
+    {
+      "key": "Weak Peripheral Pulse",
+      "label": "Weak peripheral pulse",
+      "group": "Exam",
+      "source": "Weak Peripheral Pulse"
+    },
+    {
+      "key": "Lung rales",
+      "label": "Lung rales",
+      "group": "Exam",
+      "source": "Lung rales"
+    },
+    {
+      "key": "Systolic Murmur",
+      "label": "Systolic murmur",
+      "group": "Exam",
+      "source": "Systolic Murmur"
+    },
+    {
+      "key": "Diastolic Murmur",
+      "label": "Diastolic murmur",
+      "group": "Exam",
+      "source": "Diastolic Murmur"
+    },
+    {
+      "key": "Q Wave",
+      "label": "Q wave",
+      "group": "ECG",
+      "source": "Q Wave"
+    },
+    {
+      "key": "St Elevation",
+      "label": "ST elevation",
+      "group": "ECG",
+      "source": "St Elevation"
+    },
+    {
+      "key": "St Depression",
+      "label": "ST depression",
+      "group": "ECG",
+      "source": "St Depression"
+    },
+    {
+      "key": "Tinversion",
+      "label": "T-wave inversion",
+      "group": "ECG",
+      "source": "Tinversion"
+    },
+    {
+      "key": "LVH",
+      "label": "LVH",
+      "group": "ECG",
+      "source": "LVH"
+    },
+    {
+      "key": "Poor R Progression",
+      "label": "Poor R progression",
+      "group": "ECG",
+      "source": "Poor R Progression"
+    },
+    {
+      "key": "BBB_LBBB",
+      "label": "Left bundle branch block",
+      "group": "ECG",
+      "source": "BBB"
+    },
+    {
+      "key": "BBB_RBBB",
+      "label": "Right bundle branch block",
+      "group": "ECG",
+      "source": "BBB"
+    },
+    {
+      "key": "FBS",
+      "label": "Fasting blood sugar",
+      "group": "Laboratory",
+      "source": "FBS"
+    },
+    {
+      "key": "CR",
+      "label": "Creatinine",
+      "group": "Laboratory",
+      "source": "CR"
+    },
+    {
+      "key": "TG",
+      "label": "Triglycerides",
+      "group": "Laboratory",
+      "source": "TG"
+    },
+    {
+      "key": "LDL",
+      "label": "LDL",
+      "group": "Laboratory",
+      "source": "LDL"
+    },
+    {
+      "key": "HDL",
+      "label": "HDL",
+      "group": "Laboratory",
+      "source": "HDL"
+    },
+    {
+      "key": "BUN",
+      "label": "BUN",
+      "group": "Laboratory",
+      "source": "BUN"
+    },
+    {
+      "key": "ESR",
+      "label": "ESR",
+      "group": "Laboratory",
+      "source": "ESR"
+    },
+    {
+      "key": "HB",
+      "label": "Hemoglobin",
+      "group": "Laboratory",
+      "source": "HB"
+    },
+    {
+      "key": "K",
+      "label": "Potassium",
+      "group": "Laboratory",
+      "source": "K"
+    },
+    {
+      "key": "Na",
+      "label": "Sodium",
+      "group": "Laboratory",
+      "source": "Na"
+    },
+    {
+      "key": "WBC",
+      "label": "WBC",
+      "group": "Laboratory",
+      "source": "WBC"
+    },
+    {
+      "key": "Lymph",
+      "label": "Lymphocytes",
+      "group": "Laboratory",
+      "source": "Lymph"
+    },
+    {
+      "key": "Neut",
+      "label": "Neutrophils",
+      "group": "Laboratory",
+      "source": "Neut"
+    },
+    {
+      "key": "PLT",
+      "label": "Platelets",
+      "group": "Laboratory",
+      "source": "PLT"
+    },
+    {
+      "key": "EF-TTE",
+      "label": "Ejection fraction",
+      "group": "Echo",
+      "source": "EF-TTE"
+    },
+    {
+      "key": "Region RWMA",
+      "label": "Region with RWMA",
+      "group": "Echo",
+      "source": "Region RWMA"
+    },
+    {
+      "key": "VHD_score",
+      "label": "Valve disease grade",
+      "group": "Echo",
+      "source": "VHD"
+    }
+  ],
+  "targets": {
+    "cad": {
+      "title": "Overall CAD",
+      "short": "CAD",
+      "question": "Probability the source angiography label would be CAD",
+      "positive": "CAD",
+      "negative": "Normal",
+      "column": "Cath"
+    },
+    "lad": {
+      "title": "LAD stenosis",
+      "short": "LAD",
+      "question": "Probability of significant LAD stenosis",
+      "positive": "Stenotic",
+      "negative": "Normal",
+      "column": "LAD"
+    },
+    "lcx": {
+      "title": "LCX stenosis",
+      "short": "LCX",
+      "question": "Probability of significant LCX stenosis",
+      "positive": "Stenotic",
+      "negative": "Normal",
+      "column": "LCX"
+    },
+    "rca": {
+      "title": "RCA stenosis",
+      "short": "RCA",
+      "question": "Probability of significant RCA stenosis",
+      "positive": "Stenotic",
+      "negative": "Normal",
+      "column": "RCA"
+    }
+  },
+  "samples": [
+    {
+      "id": "A",
+      "source_row": 3,
+      "pattern": "all_normal",
+      "title": "No stenotic vessel",
+      "vignette": "66 year old woman, height 158 cm, weight 67 kg. History includes hypertension. Nonanginal pain is marked yes. Function class 3. Diastolic murmur is marked yes. Valve disease is coded Severe. Ejection fraction 55%. Source angiography pattern: No stenotic vessel.",
+      "features": {
+        "Age": 66.0,
+        "Sex": "Female",
+        "Weight": 67.0,
+        "Length": 158.0,
+        "BMI": 26.83864765261977,
+        "DM": 0,
+        "HTN": 1,
+        "Current Smoker": 0,
+        "EX-Smoker": 0,
+        "FH": 0,
+        "Obesity": "Y",
+        "CRF": "N",
+        "CVA": "N",
+        "Airway disease": "N",
+        "Thyroid Disease": "N",
+        "CHF": "N",
+        "DLP": "N",
+        "Typical Chest Pain": 0,
+        "Dyspnea": "Y",
+        "Function Class": 3,
+        "Atypical": "N",
+        "Nonanginal": "Y",
+        "LowTH Ang": "N",
+        "BP": 100.0,
+        "PR": 80.0,
+        "Edema": 0,
+        "Weak Peripheral Pulse": "N",
+        "Lung rales": "N",
+        "Systolic Murmur": "N",
+        "Diastolic Murmur": "Y",
+        "Q Wave": 0,
+        "St Elevation": 0,
+        "St Depression": 1,
+        "Tinversion": 0,
+        "LVH": "N",
+        "Poor R Progression": "N",
+        "BBB": "N",
+        "FBS": 78.0,
+        "CR": 1.2,
+        "TG": 63.0,
+        "LDL": 55.0,
+        "HDL": 27.0,
+        "BUN": 30.0,
+        "ESR": 76.0,
+        "HB": 12.1,
+        "K": 4.4,
+        "Na": 142.0,
+        "WBC": 13000.0,
+        "Lymph": 18.0,
+        "Neut": 72.0,
+        "PLT": 742.0,
+        "EF-TTE": 55.0,
+        "Region RWMA": 0,
+        "VHD": "Severe"
+      },
+      "dataset_labels": {
+        "cad": "Normal",
+        "lad": "Normal",
+        "lcx": "Normal",
+        "rca": "Normal"
+      }
+    },
+    {
+      "id": "B",
+      "source_row": 5,
+      "pattern": "three_vessel",
+      "title": "Three-vessel pattern",
+      "vignette": "50 year old man, height 175 cm, weight 75 kg. History includes current smoking. Typical chest pain is marked yes. Function class 3. Ejection fraction 50%. Source angiography pattern: Three-vessel pattern.",
+      "features": {
+        "Age": 50.0,
+        "Sex": "Male",
+        "Weight": 75.0,
+        "Length": 175.0,
+        "BMI": 24.489795918367346,
+        "DM": 0,
+        "HTN": 0,
+        "Current Smoker": 1,
+        "EX-Smoker": 0,
+        "FH": 0,
+        "Obesity": "N",
+        "CRF": "N",
+        "CVA": "N",
+        "Airway disease": "N",
+        "Thyroid Disease": "N",
+        "CHF": "N",
+        "DLP": "N",
+        "Typical Chest Pain": 1,
+        "Dyspnea": "N",
+        "Function Class": 3,
+        "Atypical": "N",
+        "Nonanginal": "N",
+        "LowTH Ang": "N",
+        "BP": 118.0,
+        "PR": 70.0,
+        "Edema": 0,
+        "Weak Peripheral Pulse": "N",
+        "Lung rales": "N",
+        "Systolic Murmur": "N",
+        "Diastolic Murmur": "N",
+        "Q Wave": 0,
+        "St Elevation": 0,
+        "St Depression": 0,
+        "Tinversion": 0,
+        "LVH": "N",
+        "Poor R Progression": "N",
+        "BBB": "N",
+        "FBS": 86.0,
+        "CR": 1.0,
+        "TG": 139.0,
+        "LDL": 119.0,
+        "HDL": 34.0,
+        "BUN": 13.0,
+        "ESR": 18.0,
+        "HB": 15.6,
+        "K": 4.2,
+        "Na": 141.0,
+        "WBC": 7300.0,
+        "Lymph": 26.0,
+        "Neut": 66.0,
+        "PLT": 194.0,
+        "EF-TTE": 50.0,
+        "Region RWMA": 0,
+        "VHD": "N"
+      },
+      "dataset_labels": {
+        "cad": "CAD",
+        "lad": "Stenotic",
+        "lcx": "Stenotic",
+        "rca": "Stenotic"
+      }
+    },
+    {
+      "id": "C",
+      "source_row": 14,
+      "pattern": "lad_only",
+      "title": "LAD only",
+      "vignette": "66 year old woman, height 155 cm, weight 63 kg. History includes diabetes, hypertension, dyslipidemia. Atypical chest pain is marked yes. Function class 2. Valve disease is coded mild. Ejection fraction 55%. Source angiography pattern: LAD only.",
+      "features": {
+        "Age": 66.0,
+        "Sex": "Female",
+        "Weight": 63.0,
+        "Length": 155.0,
+        "BMI": 26.22268470343392,
+        "DM": 1,
+        "HTN": 1,
+        "Current Smoker": 0,
+        "EX-Smoker": 0,
+        "FH": 0,
+        "Obesity": "Y",
+        "CRF": "N",
+        "CVA": "N",
+        "Airway disease": "N",
+        "Thyroid Disease": "N",
+        "CHF": "N",
+        "DLP": "Y",
+        "Typical Chest Pain": 0,
+        "Dyspnea": "Y",
+        "Function Class": 2,
+        "Atypical": "Y",
+        "Nonanginal": "N",
+        "LowTH Ang": "N",
+        "BP": 130.0,
+        "PR": 80.0,
+        "Edema": 0,
+        "Weak Peripheral Pulse": "N",
+        "Lung rales": "N",
+        "Systolic Murmur": "N",
+        "Diastolic Murmur": "N",
+        "Q Wave": 0,
+        "St Elevation": 0,
+        "St Depression": 1,
+        "Tinversion": 0,
+        "LVH": "N",
+        "Poor R Progression": "N",
+        "BBB": "N",
+        "FBS": 213.0,
+        "CR": 0.7,
+        "TG": 125.0,
+        "LDL": 110.0,
+        "HDL": 30.0,
+        "BUN": 12.0,
+        "ESR": 31.0,
+        "HB": 12.9,
+        "K": 4.3,
+        "Na": 139.0,
+        "WBC": 6400.0,
+        "Lymph": 60.0,
+        "Neut": 39.0,
+        "PLT": 217.0,
+        "EF-TTE": 55.0,
+        "Region RWMA": 0,
+        "VHD": "mild"
+      },
+      "dataset_labels": {
+        "cad": "CAD",
+        "lad": "Stenotic",
+        "lcx": "Normal",
+        "rca": "Normal"
+      }
+    },
+    {
+      "id": "D",
+      "source_row": 50,
+      "pattern": "lcx_only",
+      "title": "LCX only",
+      "vignette": "73 year old man, height 163 cm, weight 78 kg. History includes hypertension. Atypical chest pain is marked yes. Function class 2. Systolic murmur is marked yes. Diastolic murmur is marked yes. Valve disease is coded Moderate. Ejection fraction 45%. Source angiography pattern: LCX only.",
+      "features": {
+        "Age": 73.0,
+        "Sex": "Male",
+        "Weight": 78.0,
+        "Length": 163.0,
+        "BMI": 29.357521924046825,
+        "DM": 0,
+        "HTN": 1,
+        "Current Smoker": 0,
+        "EX-Smoker": 0,
+        "FH": 0,
+        "Obesity": "Y",
+        "CRF": "N",
+        "CVA": "N",
+        "Airway disease": "N",
+        "Thyroid Disease": "N",
+        "CHF": "N",
+        "DLP": "N",
+        "Typical Chest Pain": 0,
+        "Dyspnea": "Y",
+        "Function Class": 2,
+        "Atypical": "Y",
+        "Nonanginal": "N",
+        "LowTH Ang": "N",
+        "BP": 140.0,
+        "PR": 80.0,
+        "Edema": 0,
+        "Weak Peripheral Pulse": "N",
+        "Lung rales": "N",
+        "Systolic Murmur": "Y",
+        "Diastolic Murmur": "Y",
+        "Q Wave": 0,
+        "St Elevation": 0,
+        "St Depression": 0,
+        "Tinversion": 1,
+        "LVH": "N",
+        "Poor R Progression": "N",
+        "BBB": "N",
+        "FBS": 83.0,
+        "CR": 1.4,
+        "TG": 110.0,
+        "LDL": 97.0,
+        "HDL": 52.0,
+        "BUN": 23.0,
+        "ESR": 3.0,
+        "HB": 14.5,
+        "K": 4.5,
+        "Na": 145.0,
+        "WBC": 5300.0,
+        "Lymph": 38.0,
+        "Neut": 49.0,
+        "PLT": 172.0,
+        "EF-TTE": 45.0,
+        "Region RWMA": 0,
+        "VHD": "Moderate"
+      },
+      "dataset_labels": {
+        "cad": "CAD",
+        "lad": "Normal",
+        "lcx": "Stenotic",
+        "rca": "Normal"
+      }
+    },
+    {
+      "id": "E",
+      "source_row": 44,
+      "pattern": "rca_only",
+      "title": "RCA only",
+      "vignette": "73 year old woman, height 148 cm, weight 55 kg. History includes diabetes, hypertension, dyslipidemia. Function class 2. Valve disease is coded mild. Ejection fraction 45%. Source angiography pattern: RCA only.",
+      "features": {
+        "Age": 73.0,
+        "Sex": "Female",
+        "Weight": 55.0,
+        "Length": 148.0,
+        "BMI": 25.10956902848795,
+        "DM": 1,
+        "HTN": 1,
+        "Current Smoker": 0,
+        "EX-Smoker": 0,
+        "FH": 0,
+        "Obesity": "Y",
+        "CRF": "N",
+        "CVA": "N",
+        "Airway disease": "N",
+        "Thyroid Disease": "N",
+        "CHF": "N",
+        "DLP": "Y",
+        "Typical Chest Pain": 0,
+        "Dyspnea": "Y",
+        "Function Class": 2,
+        "Atypical": "N",
+        "Nonanginal": "N",
+        "LowTH Ang": "N",
+        "BP": 120.0,
+        "PR": 70.0,
+        "Edema": 0,
+        "Weak Peripheral Pulse": "Y",
+        "Lung rales": "N",
+        "Systolic Murmur": "N",
+        "Diastolic Murmur": "N",
+        "Q Wave": 0,
+        "St Elevation": 0,
+        "St Depression": 0,
+        "Tinversion": 1,
+        "LVH": "N",
+        "Poor R Progression": "N",
+        "BBB": "N",
+        "FBS": 62.0,
+        "CR": 0.5,
+        "TG": 99.0,
+        "LDL": 153.0,
+        "HDL": 31.0,
+        "BUN": 11.0,
+        "ESR": 90.0,
+        "HB": 10.7,
+        "K": 4.1,
+        "Na": 140.0,
+        "WBC": 7800.0,
+        "Lymph": 30.0,
+        "Neut": 60.0,
+        "PLT": 330.0,
+        "EF-TTE": 45.0,
+        "Region RWMA": 0,
+        "VHD": "mild"
+      },
+      "dataset_labels": {
+        "cad": "CAD",
+        "lad": "Normal",
+        "lcx": "Normal",
+        "rca": "Stenotic"
+      }
+    },
+    {
+      "id": "F",
+      "source_row": 10,
+      "pattern": "lad_lcx",
+      "title": "LAD and LCX",
+      "vignette": "58 year old man, height 168 cm, weight 75 kg. History includes hypertension. Typical chest pain is marked yes. Function class 2. Valve disease is coded mild. Ejection fraction 50%. Source angiography pattern: LAD and LCX.",
+      "features": {
+        "Age": 58.0,
+        "Sex": "Male",
+        "Weight": 75.0,
+        "Length": 168.0,
+        "BMI": 26.573129251700685,
+        "DM": 0,
+        "HTN": 1,
+        "Current Smoker": 0,
+        "EX-Smoker": 1,
+        "FH": 0,
+        "Obesity": "Y",
+        "CRF": "N",
+        "CVA": "N",
+        "Airway disease": "N",
+        "Thyroid Disease": "N",
+        "CHF": "N",
+        "DLP": "N",
+        "Typical Chest Pain": 1,
+        "Dyspnea": "Y",
+        "Function Class": 2,
+        "Atypical": "N",
+        "Nonanginal": "N",
+        "LowTH Ang": "N",
+        "BP": 170.0,
+        "PR": 70.0,
+        "Edema": 0,
+        "Weak Peripheral Pulse": "N",
+        "Lung rales": "N",
+        "Systolic Murmur": "N",
+        "Diastolic Murmur": "N",
+        "Q Wave": 0,
+        "St Elevation": 0,
+        "St Depression": 0,
+        "Tinversion": 0,
+        "LVH": "N",
+        "Poor R Progression": "N",
+        "BBB": "N",
+        "FBS": 101.0,
+        "CR": 0.8,
+        "TG": 160.0,
+        "LDL": 101.0,
+        "HDL": 33.0,
+        "BUN": 19.0,
+        "ESR": 11.0,
+        "HB": 14.5,
+        "K": 4.2,
+        "Na": 142.0,
+        "WBC": 5800.0,
+        "Lymph": 44.0,
+        "Neut": 52.0,
+        "PLT": 201.0,
+        "EF-TTE": 50.0,
+        "Region RWMA": 0,
+        "VHD": "mild"
+      },
+      "dataset_labels": {
+        "cad": "CAD",
+        "lad": "Stenotic",
+        "lcx": "Stenotic",
+        "rca": "Normal"
+      }
+    }
+  ],
+  "disclaimer": "Decision support and teaching only. CardioLens is not a diagnosis, not a cath report, and not a substitute for a cardiologist or emergency care.",
+  "anatomy_note": "The heart and coronaries are a labeled schematic of typical anatomy, not a reconstruction from this patient's imaging.",
+  "in_sample_note": "Sample patients are real rows from the 303-patient cohort. The live model was refit on every row after cross-validation, so a sample prediction is an illustration, not a fair test. Use the cross-validation metrics for performance."
+}
